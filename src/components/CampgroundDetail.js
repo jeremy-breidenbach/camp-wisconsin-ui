@@ -14,8 +14,7 @@ class CampgroundDetail extends Component {
             amenities: [],
             amenitiesWithinFacility: [],
             amenitiesGreaterThan1Mile: [],
-            amenitiesWithin10Miles: [],
-            campsites: []
+            amenitiesWithin10Miles: []
         };
     }
 
@@ -25,8 +24,10 @@ class CampgroundDetail extends Component {
         this.setState({
             amenitiesWithinFacility: this.filterAmenities(this.props.location.state.campground.amenities, "Within Facility"),
             amenitiesGreaterThan1Mile: this.filterAmenities(this.props.location.state.campground.amenities, "Greater Than 1 Mile"),
-            amenitiesWithin10Miles: this.filterAmenities(this.props.location.state.campground.amenities, "Within 10 Miles")
+            amenitiesWithin10Miles: this.filterAmenities(this.props.location.state.campground.amenities, "Within 10 Miles"),
+            mapUrl: this.setMapUrl(this.state.campground)
         });
+        
         // console.log(this.props.location);
     }
 
@@ -142,6 +143,11 @@ class CampgroundDetail extends Component {
                                 <th>Site</th>
                                 <th>Loop</th>
                                 <th>Site Type</th>
+                                <th>Max People</th>
+                                <th>Max Equipment Length</th>
+                                <th>Pets Allowed</th>
+                                <th>Sewer Hookup</th>
+                                <th>Water Hookup</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -149,6 +155,11 @@ class CampgroundDetail extends Component {
                                 <td>{campsite.site}</td>
                                 <td>{campsite.loop}</td>
                                 <td>{campsite.siteType}</td>
+                                <td>{campsite.maxPeople}</td>
+                                <td>{campsite.maxEquipmentLength}</td>
+                                <td>{campsite.petsAllowed}</td>
+                                <td>{campsite.sewerHookup}</td>
+                                <td>{campsite.waterHookup}</td>
                             </tr>)}
                         </tbody>
                     </Table>
